@@ -1,0 +1,49 @@
+﻿@model List<Bai1.Models.Employee>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Index</h2>
+<a href="#">Thêm sinh viên</a>
+@using Bai1.Models.Employee
+
+<table class="table">
+    <tr>
+        <th>Mã</th>
+        <th>Tên</th>
+        <th>Giới tính</th>
+        <th>Tuổi</th>
+        <th>Thành phố</th>
+        <th>Khoa</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(row=>item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(row => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(row => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(row => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(row => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(row => item.DepID.Name)
+            </td>
+            <td>
+                @Html.ActionLink(Html.DisplayFor(row => item.Id).ToString(), "Chi tiết", new { id=item.Id, controller="Home"})
+            </td>
+        </tr>
+    }
+
+</table>
+
+
